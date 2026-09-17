@@ -1,6 +1,6 @@
-const SUPABASE_URL = "ใส่_URL_ของคุณ";
-const SUPABASE_ANON_KEY = "ใส่_KEY_ของคุณ";
-const DEV_EMAIL = "ใส่_อีเมล_DEV_ของคุณ";
+const SUPABASE_URL = "https://jqmztdkvovkoiteoxtfq.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_9npyP88HRER20i0wwpjIhg_PaT6AIJM";
+const DEV_EMAIL = "armlnwza227@gmail.com";
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let surveys = [], isDeveloper = false, schoolMap, selectedMarker;
