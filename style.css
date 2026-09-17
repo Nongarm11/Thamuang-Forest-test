@@ -1,0 +1,19 @@
+:root { --green-950: #103c2a; --yellow: #f4c94e; --white: #ffffff; }
+body { font-family: 'Kanit', sans-serif; background: #f7f7f1; margin: 0; }
+.header { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600') center/cover; padding: 20px; color: white; }
+.topbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+.navbar { display: flex; gap: 15px; }
+.nav-btn { background: none; border: none; color: white; cursor: pointer; }
+.page { display: none; } .page.active { display: block; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px auto; max-width: 1200px; }
+.stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; }
+.survey-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; margin: 20px auto; }
+#schoolMap { height: 400px; background: #eee; }
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+.modal.show { display: flex; }
+.modal-box { background: white; padding: 30px; border-radius: 10px; width: 300px; position: relative; }
+.hidden { display: none; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+.primary-btn { background: var(--yellow); border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
+.delete-btn { background: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer; }
