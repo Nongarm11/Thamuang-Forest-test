@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thamuang Forest | นวัตกรรมห้องเรียนสำรวจต้นไม้</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="topbar">
+      <a class="brand" href="#" id="brandHome">
+        <span class="brand-icon">🌳</span>
+        <span><strong>Thamuang Forest</strong><small>นวัตกรรมห้องเรียนเพื่อการสำรวจต้นไม้</small></span>
+      </a>
+      <nav class="navbar">
+        <button class="nav-btn active" data-page="home">หน้าแรก</button>
+        <button class="nav-btn" data-page="survey">สำรวจต้นไม้</button>
+        <button class="nav-btn" data-page="database">ข้อมูลต้นไม้</button>
+        <button class="nav-btn" data-page="about">เกี่ยวกับ</button>
+        <button id="developerButton" class="nav-btn developer-nav-btn">สำหรับ Dev</button>
+      </nav>
+    </div>
+    <section class="hero">
+      <h1>ทุกต้นไม้ในโรงเรียน<br />คือห้องเรียนของเรา</h1>
+      <button id="startSurveyButton" class="primary-btn">เริ่มสำรวจต้นไม้ <span>→</span></button>
+    </section>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="stats-grid">
+        <article class="stat-card"><strong><span id="totalTrees">0</span></strong><p>ต้นไม้ที่สำรวจ</p></article>
+        <article class="stat-card"><strong><span id="totalTypes">0</span></strong><p>ประเภทต้นไม้</p></article>
+        <article class="stat-card"><strong><span id="totalAreas">0</span></strong><p>พื้นที่สำรวจ</p></article>
+      </div>
+      <div id="typeSummary" class="type-list"></div>
+    </section>
+
+    <section id="survey" class="page">
+      <div class="survey-layout">
+        <section class="content-card">
+          <form id="surveyForm">
+            <label>ชื่อต้นไม้ <input id="treeName" type="text" required /></label>
+            <label>ประเภท 
+              <select id="treeType" required>
+                <option value="ไม้ยืนต้น">ไม้ยืนต้น</option><option value="ไม้พุ่ม">ไม้พุ่ม</option>
+                <option value="ไม้ผล">ไม้ผล</option><option value="ไม้ดอก">ไม้ดอก</option>
+                <option value="ปาล์ม">ปาล์ม</option><option value="อื่น ๆ">อื่น ๆ</option>
+              </select>
+            </label>
+            <label>พื้นที่สำรวจ <input id="surveyArea" type="text" required /></label>
+            <label>ชื่อผู้สำรวจ <input id="surveyedBy" type="text" required /></label>
+            <input id="latitude" type="hidden" /><input id="longitude" type="hidden" />
+            <button id="submitButton" class="primary-btn" type="submit">บันทึกข้อมูล</button>
+            <div id="formMessage" class="message"></div>
+          </form>
+        </section>
+        <aside class="map-panel"><div id="schoolMap"></div></aside>
+      </div>
+    </section>
+
+    <section id="database" class="page">
+      <div class="filter-bar"><input id="searchInput" type="search" placeholder="ค้นหาชื่อต้นไม้..." /></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ชื่อ</th><th>ประเภท</th><th>พื้นที่</th><th>ตำแหน่ง</th><th>ผู้สำรวจ</th><th>จัดการ</th></tr></thead>
+          <tbody id="treeTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="developerModal" class="modal"><div class="modal-box">
+    <button class="close-modal" onclick="document.getElementById('developerModal').classList.remove('show')">×</button>
+    <form id="developerLoginForm">
+      <h3>เข้าสู่ระบบ Dev</h3>
+      <input id="developerEmail" type="email" placeholder="อีเมล" required />
+      <input id="developerPassword" type="password" placeholder="รหัสผ่าน" required />
+      <button type="submit" class="primary-btn">เข้าสู่ระบบ</button>
+    </form>
+    <div id="developerProfileSection" class="hidden">
+      <button id="developerLogoutButton" class="delete-btn">ออกจากระบบ</button>
+    </div>
+  </div></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
